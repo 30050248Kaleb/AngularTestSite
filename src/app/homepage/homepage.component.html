@@ -1,0 +1,56 @@
+<h2>{{ title }}</h2>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  <div class="col" *ngFor="let character of data">
+    <div class="card" style="width: 18rem">
+      <img
+        class="card-img-top"
+        src="{{ character.img }}"
+        alt="{{ character.name }}"
+      />
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ character.name }}
+          <span class="badge bg-primary">{{ character.status }}</span>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ character.nickname }}</h6>
+        <p class="card-text">
+          <span class="badge bg-secondary">Portrayed by:</span>
+          {{ character.portrayed }}
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngIf="character.occupation != 'Unknown'">
+            <p class="card-text">
+              <span class="badge bg-secondary">Occupation:</span>
+               <span class="badge bg-dark" *ngFor="let job of character.occupation">{{ job }}</span>
+            </p>
+          </li>
+        <li class="list-group-item" *ngIf="character.birthday != 'Unknown'">
+          <p class="card-text">
+            <span class="badge bg-secondary">Birthday:</span>
+            {{ character.birthday }}
+          </p>
+        </li>
+        <li class="list-group-item">
+          <p class="card-text">
+            <span class="badge bg-secondary">Category:</span>
+            {{ character.category }}
+          </p>
+        </li>
+        <li class="list-group-item" *ngIf="character.appearance.length > 0">
+          <p class="card-text">
+            <span class="badge bg-secondary">BB Appearance:</span>
+             <span class="badge bg-primary" *ngFor="let appearance of character.appearance">{{ appearance }}</span>
+          </p>
+        </li>
+        <li class="list-group-item" *ngIf="character.better_call_saul_appearance.length > 0">
+          <p class="card-text">
+            <span class="badge bg-secondary">BCS Appearance:</span>
+             <span class="badge bg-warning" *ngFor="let bcsAppearance of character.better_call_saul_appearance">{{ bcsAppearance }}</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
